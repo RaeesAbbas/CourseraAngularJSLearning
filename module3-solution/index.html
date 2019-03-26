@@ -1,31 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Narrow Down Your Menu Choice</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Module 3</title>
+  <link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+    crossorigin="anonymous"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <style>
+    footer {
+      border-top: solid 1px gray;
+      font-size: 0.8em;
+      text-align: center;
+    }
+  </style>
+</head>
 <body ng-app="NarrowItDownApp">
-   <div class="container">
-    <h1>Narrow Down Your Chinese Menu Choice</h1>
-
-    <div class="form-group" ng-controller="NarrowItDownController as search">
-      <input type="text" placeholder="search term" class="form-control" id="searchFor" ng-model="search.searchFor">
+  <div class="container">
+       <h1>Narrow Down Your Chinese Menu Choice</h1>
+    <div  ng-controller="NarrowItDownController as search">
+      
+        <div class="form-group">
+          
+            <input type="text" id="searchFor" ng-model="search.searchFor" class="form-control" placeholder="Search term" />
+           </div>
+           <div class="form-group">
+            <button ng-click="search.search()" class="btn btn-primary pull-right">Narrow It Down For Me !</button>
     </div>
-    <div class="form-group narrow-button">
-      <button ng-click="search.search()"  class="btn btn-primary">Narrow It Down For Me!</button>
-    </div>
-
-    <!-- found-items should be implemented as a component -->
-    <found-items  title="Items found" 
+       
+        <found-items 
+          title="Items found" 
           list="search.found" 
           result="{{ search.searchResult }}" 
-          dont-want="search.dontWant(index)"></found-items>
+          dont-want="search.dontWant(index)">
+          	
+          </found-items>
+    </div>
   </div>
-<script src="app.js"></script>
   <script>
-    $(function() { $("input").focus(); })
+    $(function()
+     { 
+     	$("input").focus(); 
+     })
   </script>
 </body>
 </html>
